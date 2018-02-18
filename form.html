@@ -2,18 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="bobby, chan, male" >
-    <title>My page</title>
+    <meta name="description" content="HTML Form for CMPT 218 A2" >
+    <title>Form</title>
 
 </head>
 <body>
-<!-- page content -->
-<h1> My FORM </h1>
-<form name='simpleform' method='POST' action='http://localhost:8080'>
-    <label for="fname">F Name:</label> <input id = "fname" placeholder='first' name='fname' type='text' /> <br />
-    <label for="lname">L Name:</label> <input name='lname' placeholder='last' type='text' /> <br />
-    <label for="age">Age:</label> <input name='age' placeholder='0' type='number' step='1' /> <br />
-    <input type='submit' value='SEND' />
+<h1> A2 Form </h1>
+<form id='user' name='userReg' method='POST' action='http://localhost:8080'>
+    <label for="fname">First Name:</label><br /> <input id = "fname" placeholder='first' name='fname' type='text' /> <br />
+    <label for="lname">Last Name:</label><br /> <input id = "lname" placeholder='last' name='lname' type='text' /> <br />
+    <label for="bday">Birth Date:</label><br /> <input id = "bday" placeholder='0' name='bday' type='date'/> <br />
+    <label for="email">Email:</label><br /> <input id = "email" placeholder='email@example.com' name='email' type='email'/> <br />
+    <input type="reset" value='RESET' />
 </form>
+<p>
+    <button id="addMore">ADD MORE</button>
+    <button type="submit" form="user" value="Submit">SUBMIT</button>
+</p>
 </body>
 </html>
