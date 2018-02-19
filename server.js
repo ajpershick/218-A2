@@ -23,9 +23,7 @@ server.on('request', function(req,res){
         res.write(contents);
         res.end();
       }
-
     });
-
   } else if (req.method === 'GET' && req.url === '/data/users.json'){
     var filepath = path.join(__dirname, './data/users.json');
 
@@ -39,7 +37,6 @@ server.on('request', function(req,res){
         res.write(contents);
         res.end();
       }
-
     });
   } else if (req.method === 'GET' && req.url === '/script.js'){
     var filepath = path.join(__dirname, './script.js');
@@ -54,9 +51,22 @@ server.on('request', function(req,res){
         res.write(contents);
         res.end();
       }
-
     });
-  }else if (req.method === 'POST' && req.url === '/'){
+  }else if (req.method === 'GET' && req.url === '/style.css'){
+    var filepath = path.join(__dirname, './style.css');
+
+    fs.readFile(filepath, function(err, contents){
+      if(err){
+        res.writeHead(404);
+        res.write('404 Error');
+        res.end()
+      } else {
+        res.writeHead(200, {"Content-Type": "text/css"});
+        res.write(contents);
+        res.end();
+      }
+    });
+  } else if (req.method === 'POST' && req.url === '/'){
 
   } else {
     res.writeHead(404);
