@@ -15,7 +15,9 @@ server.on('request', function(req,res){
 
     fs.readFile(filepath, function(err, contents){
       if(err){
-        // handle error
+        res.writeHead(404);
+        res.write('404 Error');
+        res.end()
       } else {
         res.writeHead(200, {"Content-Type": "text/html"});
         res.write(contents);
@@ -29,7 +31,9 @@ server.on('request', function(req,res){
 
     fs.readFile(filepath, function(err, contents){
       if(err){
-        // handle error
+        res.writeHead(404);
+        res.write('404 Error');
+        res.end()
       } else {
         res.writeHead(200, {"Content-Type": "application/json"});
         res.write(contents);
@@ -37,14 +41,16 @@ server.on('request', function(req,res){
       }
 
     });
-  } else if (req.method === 'GET' && req.url === '/users.html'){
-    var filepath = path.join(__dirname, './users.html');
+  } else if (req.method === 'GET' && req.url === '/script.js'){
+    var filepath = path.join(__dirname, './script.js');
 
     fs.readFile(filepath, function(err, contents){
       if(err){
-        // handle error
+        res.writeHead(404);
+        res.write('404 Error');
+        res.end()
       } else {
-        res.writeHead(200, {"Content-Type": "html/text"});
+        res.writeHead(200, {"Content-Type": "text/javascript"});
         res.write(contents);
         res.end();
       }
