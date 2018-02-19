@@ -9,7 +9,7 @@ server.on('request', function(req,res){
 
   console.log('request:', req.url);
   var urlObj = url.parse(req.url, true); // true => query turned into an obj
-  console.log(urlObj.query.lname);
+  //console.log(urlObj);
   if (req.method === 'GET' && req.url === '/'){
     var filepath = path.join(__dirname, './form.html');
 
@@ -67,7 +67,16 @@ server.on('request', function(req,res){
       }
     });
   } else if (req.method === 'POST' && req.url === '/'){
-
+    var body ='';
+    req.on('data', function(data){
+      body += data.toString();
+    });
+    req.on('end', function(){
+      var postObj = qs.parse(body);
+      console.log(postObj);
+      fs.writeFile("./data/users.json", JSON.stringify(postObj, null, 4));
+      res.end();
+    });
   } else {
     res.writeHead(404);
     res.write('404 Error');
@@ -75,6 +84,5 @@ server.on('request', function(req,res){
   }
 });
 server.listen(8080);
-
 
 console.log('Magic is happening on port 8080');

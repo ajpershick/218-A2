@@ -1,9 +1,8 @@
 document.getElementById('addForm').addEventListener("click", newForm);
 document.getElementById('remForm').addEventListener("click", delForm);
 
+//add new li element with a form
 function newForm(){
-  console.log('in newForm()');
-
   var listItem = document.createElement('li');
   var template = document.getElementById('user');
   var form = template.cloneNode(true);
@@ -13,9 +12,10 @@ function newForm(){
   document.getElementById('formList').appendChild(listItem);
 }
 
+//remove li element with a form
 function delForm(){
-  console.log('in delForm()');
-
   var list = document.getElementById('formList');
-  list.removeChild(list.childNodes[0]);
+  if (Array.from(list.childNodes).length > 1) {
+    list.removeChild(list.childNodes[0]);
+  }
 }
